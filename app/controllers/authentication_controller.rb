@@ -10,10 +10,11 @@ class AuthenticationController < ApplicationController
       auth_token =
         AuthenticateUser.new(auth_params[:email], auth_params[:password]).call
       if auth_token
-        response = { auth_token: auth_token }
+        user = User.find_by(email: auth_params[:email])
+        response = { auth_token: auth_token, user: user }
         json_response(response)
       end 
-       
+      
     end
   
     private
