@@ -7,6 +7,7 @@ RSpec.describe 'Users API', type: :request do
     attributes_for(:user, password_confirmation: user.password)
   end
 
+  ############### TEST FOR POSTING A USER  ####################
   # User signup test suite
   describe 'POST /signup' do
     context 'when valid request' do

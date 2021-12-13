@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'Authentication', type: :request do
+
+  ############### TEST LOG IN ##################
   # Authentication test suite
   describe 'POST /auth/login' do
     # create test user

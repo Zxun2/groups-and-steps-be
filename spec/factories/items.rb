@@ -2,8 +2,8 @@ require 'faker'
 
 FactoryBot.define do
     factory :item do
-      name { Faker::Movies::StarWars.character }
-      done { false }
+      step { Faker::Movies::StarWars.character }
+      completed { false }
       todo_id { nil }
     end
 end

@@ -8,6 +8,7 @@ RSpec.describe 'Todos API', type: :request do
   # authorize request
   let(:headers) { valid_headers }
 
+  ############### TEST FOR GETTING ALL TODOS FOR A USER  ####################
   # Test suite for GET /todos
   describe 'GET /todos' do
     # update request with headers
@@ -24,6 +25,7 @@ RSpec.describe 'Todos API', type: :request do
     end
   end
 
+  ############### TEST FOR GETTING ONE TODOS FOR A USER  ####################
   # Test suite for GET /todos/:id
   describe 'GET /todos/:id' do
     before { get "/todos/#{todo_id}", params: {}, headers: headers }
@@ -52,6 +54,7 @@ RSpec.describe 'Todos API', type: :request do
     end
   end
 
+  ############### TEST FOR POSTING A TODOS FOR A USER  ####################
   # Test suite for POST /todos
   describe 'POST /todos' do
     let(:valid_attributes) do
@@ -86,6 +89,7 @@ RSpec.describe 'Todos API', type: :request do
     end
   end
 
+  ############### TEST FOR UPDATING A TODOS FOR A USER  ####################
   # Test suite for PUT /todos/:id
   describe 'PUT /todos/:id' do
     let(:valid_attributes) { { title: 'Shopping' }.to_json }
@@ -103,6 +107,7 @@ RSpec.describe 'Todos API', type: :request do
     end
   end
 
+  ############### TEST FOR DELETING A TODOS FOR A USER  ####################
   # Test suite for DELETE /todos/:id
   describe 'DELETE /todos/:id' do
     before { delete "/todos/#{todo_id}", params: {}, headers: headers }

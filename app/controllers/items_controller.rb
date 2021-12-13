@@ -33,7 +33,7 @@ class ItemsController < ApplicationController
     private
   
     def item_params
-      params.permit(:name, :done)
+      params.permit(:step, :completed)
     end
   
     def set_todo

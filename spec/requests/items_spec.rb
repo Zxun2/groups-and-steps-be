@@ -4,11 +4,12 @@ RSpec.describe 'Items API' do
   # Initialize the test data
   let(:user) { create(:user) }
   let!(:todo) { create(:todo, created_by: user.id) }
-  let!(:items) { create_list(:item, 20, todo_id: todo.id) }
+  let!(:items) { create_list(:item, 20, todo_id: todo.id ) }
   let(:todo_id) { todo.id }
   let(:id) { items.first.id }
   let(:headers) { valid_headers }
 
+  ############### TEST FOR GETTING ALL ITEMS FOR A PARTICULAR TODO  ####################
   # Test suite for GET /todos/:todo_id/items
   describe 'GET /todos/:todo_id/items' do
     before { get "/todos/#{todo_id}/items", params: {}, headers: headers }
@@ -36,6 +37,7 @@ RSpec.describe 'Items API' do
     end
   end
 
+  ############### TEST FOR GETTING AN ITEM FOR A PARTICULAR TODO  ####################
   # Test suite for GET /todos/:todo_id/items/:id
   describe 'GET /todos/:todo_id/items/:id' do
     before { get "/todos/#{todo_id}/items/#{id}", params: {}, headers: headers }
@@ -63,9 +65,10 @@ RSpec.describe 'Items API' do
     end
   end
 
-  # Test suite for PUT /todos/:todo_id/items
+  ############### TEST FOR POSTING AN ITEM FOR A PARTICULAR TODO  ####################
+  # Test suite for POST /todos/:todo_id/items
   describe 'POST /todos/:todo_id/items' do
-    let(:valid_attributes) { { name: 'Visit Narnia', done: false }.to_json }
+    let(:valid_attributes) { { step: 'Visit Narnia', completed: false }.to_json }
 
     context 'when request attributes are valid' do
       before do
@@ -85,14 +88,15 @@ RSpec.describe 'Items API' do
       end
 
       it 'returns a failure message' do
-        expect(response.body).to match(/Validation failed: Name can't be blank/)
+        expect(response.body).to match(/Validation failed: Step can't be blank/)
       end
     end
   end
 
+  ############### TEST FOR UPDATING AN ITEM FOR A PARTICULAR TODO  ####################
   # Test suite for PUT /todos/:todo_id/items/:id
   describe 'PUT /todos/:todo_id/items/:id' do
-    let(:valid_attributes) { { name: 'Mozart' }.to_json }
+    let(:valid_attributes) { { step: 'Mozart' }.to_json }
 
     before do
       put "/todos/#{todo_id}/items/#{id}", params: valid_attributes, headers: headers
@@ -104,7 +108,7 @@ RSpec.describe 'Items API' do
 
       it 'updates the item' do
         updated_item = Item.find(id)
-        expect(updated_item.name).to match(/Mozart/)
+        expect(updated_item.step).to match(/Mozart/)
       end
     end
 
@@ -121,6 +125,7 @@ RSpec.describe 'Items API' do
     end
   end
 
+  ############### TEST FOR DELETING AN ITEM FOR A PARTICULAR TODO  ####################
   # Test suite for DELETE /todos/:id
   describe 'DELETE /todos/:id' do
     before { delete "/todos/#{todo_id}/items/#{id}", params: {}, headers: headers }
