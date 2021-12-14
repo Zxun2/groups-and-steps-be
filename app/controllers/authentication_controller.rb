@@ -17,6 +17,12 @@ class AuthenticationController < ApplicationController
         data: response
       }
     end
+
+    def auto_login
+      if @current_user
+        json_response(current_user)
+      end
+    end
   
     private
   

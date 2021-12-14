@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
-    before_action :set_todo
-    before_action :set_todo_item, only: [:show, :update, :destroy]
-  
+  before_action :set_todo
+  before_action :set_todo_item, only: [:show, :update, :destroy]
+    
     # GET /todos/:todo_id/items
     def index
       json_response(@todo.items)
@@ -29,7 +29,7 @@ class ItemsController < ApplicationController
       @item.destroy
       head :no_content
     end
-  
+
     private
   
     def item_params
@@ -42,5 +42,6 @@ class ItemsController < ApplicationController
   
     def set_todo_item
       @item = @todo.items.find_by!(id: params[:id]) if @todo
+
     end
   end
