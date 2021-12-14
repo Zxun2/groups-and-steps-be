@@ -11,11 +11,7 @@ class AuthenticationController < ApplicationController
         AuthenticateUser.new(auth_params[:email], auth_params[:password]).call
       user = User.find_by(email: auth_params[:email])
       response = { auth_token: auth_token, user: user }
-      # json_response(response)
-      render json: {
-        status: :created,
-        data: response
-      }
+      json_response(response)
     end
 
     def auto_login
