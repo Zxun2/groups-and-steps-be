@@ -12,7 +12,8 @@ class TodosController < ApplicationController
     def create
         # create todos belonging to current user
         @todo = current_user.todos.create!(todo_params)
-        json_response(@todo, :created)
+        @newTodo = current_user.todos
+        json_response(@newTodo, :created)
     end
   
     # GET /todos/:id
@@ -23,13 +24,15 @@ class TodosController < ApplicationController
     # PUT /todos/:id
     def update
       @todo.update(todo_params)
-      head :no_content
+      @newTodo = current_user.todos
+      json_response(@newTodo, :created)
     end
   
     # DELETE /todos/:id
     def destroy
       @todo.destroy
-      head :no_content
+      @newTodo = current_user.todos
+      json_response(@newTodo, :created)
     end
   
     private
