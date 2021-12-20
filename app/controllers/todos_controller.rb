@@ -14,7 +14,7 @@ class TodosController < ApplicationController
         # create todos belonging to current user
         @todo = current_user.todos.create!(todo_params)
         @newTodo = current_user.todos
-        response = {message: Message.todos_created, todos: @newTodo}
+        response = {message: Message.todos_created, todos: @newTodo.sort_by(&:id)}
         json_response(response, :created)
     end
   
