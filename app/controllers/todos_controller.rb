@@ -5,7 +5,8 @@ class TodosController < ApplicationController
     def index
         # get current user todos
         @todos = current_user.todos
-        json_response(@todos)
+        response = {message: Message.todos_fetched, todos: @todos.sort_by(&:id)}
+        json_response(response)
     end
   
     # POST /todos
@@ -13,26 +14,29 @@ class TodosController < ApplicationController
         # create todos belonging to current user
         @todo = current_user.todos.create!(todo_params)
         @newTodo = current_user.todos
-        json_response(@newTodo, :created)
+        response = {message: Message.todos_created, todos: @newTodo}
+        json_response(response, :created)
     end
   
     # GET /todos/:id
     def show
-      json_response(@todo)
+      json_response(@todo.items)
     end
   
     # PUT /todos/:id
     def update
       @todo.update(todo_params)
       @newTodo = current_user.todos
-      json_response(@newTodo.sort_by(&:id), :created)
+      response = {message: Message.todos_updated, todos: @newTodo.sort_by(&:id)}
+      json_response(response, :created)
     end
   
     # DELETE /todos/:id
     def destroy
       @todo.destroy
       @newTodo = current_user.todos
-      json_response(@newTodo.sort_by(&:id), :created)
+      response = {message: Message.todos_deleted, todos: @newTodo.sort_by(&:id)}
+      json_response(response, :created)
     end
   
     private
