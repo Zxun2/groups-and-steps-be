@@ -4,5 +4,7 @@ class Item < ApplicationRecord
 
   # validation
   validates_presence_of :step
+  validates_presence_of :todo_id
+  validates :step, length: { minimum: 1 }
 
 end

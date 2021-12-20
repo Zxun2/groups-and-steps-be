@@ -10,7 +10,6 @@ class User < ApplicationRecord
     validates_presence_of :name, :email, :password_digest
     validates :email, presence: true, uniqueness: { case_sensitive: false }
     validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
-    validates :name, length: { minimum: 2 }
-    # validates :bio, length: { maximum: 500 }, presence: false
+    validates :name, length: { minimum: 6 }
     validates :password, length: { in: 6..20 }
   end

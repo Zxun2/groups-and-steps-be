@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
     
     # GET /todos/:todo_id/items
     def index
-      json_response(@todo.items)
+      json_response(@todo.items.sort_by(&:id))
     end
   
     # GET /todos/:todo_id/items/:id
@@ -15,19 +15,20 @@ class ItemsController < ApplicationController
     # POST /todos/:todo_id/items
     def create
       @todo.items.create!(item_params)
-      json_response(@todo.items, :created)
+      json_response(@todo.items.sort_by(&:id), :created)
+
     end
   
     # PUT /todos/:todo_id/items/:id
     def update
       @item.update(item_params)
-      json_response(@todo.items)
+      head :no_content
     end
   
     # DELETE /todos/:todo_id/items/:id
     def destroy
       @item.destroy
-      json_response(@todo.items)
+      head :no_content
     end
 
     private

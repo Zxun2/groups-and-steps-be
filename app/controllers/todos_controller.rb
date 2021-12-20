@@ -25,14 +25,14 @@ class TodosController < ApplicationController
     def update
       @todo.update(todo_params)
       @newTodo = current_user.todos
-      json_response(@newTodo, :created)
+      json_response(@newTodo.sort_by(&:id), :created)
     end
   
     # DELETE /todos/:id
     def destroy
       @todo.destroy
       @newTodo = current_user.todos
-      json_response(@newTodo, :created)
+      json_response(@newTodo.sort_by(&:id), :created)
     end
   
     private
