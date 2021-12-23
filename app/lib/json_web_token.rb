@@ -1,7 +1,7 @@
 class JsonWebToken
     # secret to encode and decode token
     # HMAC_SECRET = Rails.application.secrets.secret_key_base
-    # HMAC_SECRET = Rails.application.credentials.read
+    # For production
     HMAC_SECRET = Rails.application.secret_key_base
 
   
