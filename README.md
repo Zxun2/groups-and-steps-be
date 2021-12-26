@@ -1,7 +1,5 @@
 # CVWO Riding on Rails 2021/2022 - 📝 [Groups and Steps](https://cvwo-groups-and-steps.netlify.app/)
 
-Test
-
 <div id="#top"></div>
 
 Frontend Repo: https://github.com/Zxun2/cvwo-assignment-frontend
