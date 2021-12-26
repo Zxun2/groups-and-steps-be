@@ -1,0 +1,43 @@
+version: "3.8"
+
+services:
+  # The PostgreSQL database service
+  db:
+    image: "postgres:14-alpine"
+    volumes:
+      - "postgres:/var/lib/postgresql/data"
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+
+  # The Redis caching service
+  redis:
+    image: "redis:6-alpine"
+    command: redis-server
+    ports:
+      - "6379:6379"
+    volumes:
+      - "redis:/data"
+
+  # This is how the Rails API is composed
+  web:
+    # It depends on db and redis with port 3000 exposed on host machine.
+    depends_on:
+      - "db"
+      - "redis"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # Remove a potentially pre-existing server.pid for Rails.
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3001 -b '0.0.0.0'"
+    ports:
+      - "3001:3001"
+    environment:
+      - DATABASE_HOST=db
+    volumes:
+      - ./:/project
+
+volumes:
+  redis:
+  postgres:
