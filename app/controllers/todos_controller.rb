@@ -7,8 +7,8 @@ class TodosController < ApplicationController
       todos_created = current_user.todos
       items = Array.new()
       for todo in todos_created do 
-        item = Item.find_by todo_id: todo.id
-        items.push(item)
+        item = Item.where(todo_id: todo.id) 
+        items.concat(item)
       end
 
       json_response(items)

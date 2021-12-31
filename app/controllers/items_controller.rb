@@ -27,7 +27,7 @@ class ItemsController < ApplicationController
       response = {message: Message.item_updated}
       json_response(response)
     end
-  
+   
     # DELETE /todos/:todo_id/items/:id
     def destroy
       @item.destroy
