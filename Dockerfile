@@ -1,5 +1,5 @@
 #  Select the base image to build from.
-FROM ruby:alpine
+FROM ruby:3.0.2-alpine
 
 # Install the required packages inside Docker.
 RUN apk update && apk add bash build-base nodejs postgresql-dev tzdata

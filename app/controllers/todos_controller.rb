@@ -1,6 +1,19 @@
 class TodosController < ApplicationController
     before_action :set_todo, only: [:show, :update, :destroy]
-  
+
+    # GET /allitems
+    def all_items 
+      user_id = current_user.id
+      todos_created = current_user.todos
+      items = Array.new()
+      for todo in todos_created do 
+        item = Item.find_by! todo_id: todo.id
+        items.push(item)
+      end
+      
+      json_response(items)
+    end
+
     # GET /todos
     def index
         # get current user todos
