@@ -28,6 +28,12 @@ Groups and Steps 📝 is a web application built using Rails and React for CVWO 
 
 ### Frontend
 
+#### Clone this repository
+
+```bash
+gh repo clone Zxun2/cvwo-assignment-frontend
+```
+
 #### Running Frontend Development Server on Docker
 
 ```bash
@@ -42,6 +48,12 @@ docker-compose -f docker-compose.yaml -f docker-compose-prod.yaml up -d --build
 
 ### Backend
 
+#### Clone this repository
+
+```bash
+gh repo clone Zxun2/cvwo-assignment-backend
+```
+
 #### Running Backend Development Server on Docker
 
 ```bash
@@ -50,6 +62,8 @@ docker-compose build
 
 # Set up database
 docker-compose run web bundle exec rails db:create
+
+# Run migration
 docker-compose run web bundle exec rails db:migrate
 
 # Rebuild any modified images and run in detached mode
