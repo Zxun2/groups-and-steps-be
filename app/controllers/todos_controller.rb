@@ -27,7 +27,7 @@ class TodosController < ApplicationController
         # create todos belonging to current user
         @todo = current_user.todos.create!(todo_params)
         @newTodo = current_user.todos
-        response = {message: Message.todos_created, todos: @newTodo.sort_by(&:id)}
+        response = {message: Message.todos_created, todos: @newTodo.sort_by(&:id), todo: @todo}
         json_response(response, :created)
     end
   
@@ -40,7 +40,7 @@ class TodosController < ApplicationController
     def update
       @todo.update(todo_params)
       @newTodo = current_user.todos
-      response = {message: Message.todos_updated, todos: @newTodo.sort_by(&:id)}
+      response = {message: Message.todos_updated, todos: @newTodo.sort_by(&:id), todo: @todo}
       json_response(response, :created)
     end
   
@@ -48,7 +48,7 @@ class TodosController < ApplicationController
     def destroy
       @todo.destroy
       @newTodo = current_user.todos
-      response = {message: Message.todos_deleted, todos: @newTodo.sort_by(&:id)}
+      response = {message: Message.todos_deleted, todos: @newTodo.sort_by(&:id), todo: @todo}
       json_response(response, :created)
     end
   

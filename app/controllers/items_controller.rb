@@ -15,8 +15,8 @@ class ItemsController < ApplicationController
   
     # POST /todos/:todo_id/items
     def create
-      @todo.items.create!(item_params)
-      response = {message: Message.items_created, steps: @todo.items.sort_by(&:id)}
+      item = @todo.items.create!(item_params)
+      response = {message: Message.items_created, steps: @todo.items.sort_by(&:id), step: item}
       json_response(response, :created)
 
     end
@@ -24,14 +24,14 @@ class ItemsController < ApplicationController
     # PUT /todos/:todo_id/items/:id
     def update
       @item.update(item_params)
-      response = {message: Message.item_updated}
+      response = {message: Message.item_updated, item: @item}
       json_response(response)
     end
    
     # DELETE /todos/:todo_id/items/:id
     def destroy
       @item.destroy
-      response = { message: Message.item_deleted}
+      response = { message: Message.item_deleted, item: @item}
       json_response(response)
     end
 
