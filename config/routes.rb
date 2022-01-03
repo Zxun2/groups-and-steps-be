@@ -11,6 +11,4 @@ Rails.application.routes.draw do
 
   get 'allitems', to: 'todos#all_items'
 
-  match '*path', to: 'application#cors_preflight_check', via: [:options]
-
 end
