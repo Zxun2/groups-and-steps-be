@@ -23,8 +23,9 @@ class ItemsController < ApplicationController
   
     # PUT /todos/:todo_id/items/:id
     def update
+      item_params[:deadline] = Date.parse(item_params[:deadline])
       @item.update(item_params)
-      response = {message: Message.item_updated, item: @item}
+      response = {message: Message.item_updated, item: @item, params: item_params}
       json_response(response)
     end
    
@@ -39,8 +40,6 @@ class ItemsController < ApplicationController
   
     def item_params
       params = params.require(:step).permit(:completed, {:tags => []}, :deadline)
-      params[:deadline] = Date.parse(params[:deadline])
-      params
     end
   
     def set_todo
