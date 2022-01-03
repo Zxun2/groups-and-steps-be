@@ -38,7 +38,7 @@ class ItemsController < ApplicationController
     private
   
     def item_params
-      params.permit(:step, :completed, {:tags => []})
+      params.permit(:step, :completed, {:tags => []}, :deadline)
     end
   
     def set_todo
