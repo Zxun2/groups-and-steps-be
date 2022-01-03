@@ -24,7 +24,7 @@ class ItemsController < ApplicationController
     # PUT /todos/:todo_id/items/:id
     def update
       @item.update(item_params)
-      response = {message: Message.item_updated, item: @item}
+      response = {message: Message.item_updated, item: @item, steps: @todo.items}
       json_response(response)
     end
    
