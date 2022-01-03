@@ -5,6 +5,6 @@ class Todo < ApplicationRecord
     
     # validations
     validates_presence_of :created_by, :title, :created_by
-    # validates :title,  uniqueness: { case_sensitive: false }
+    validates :title,  uniqueness: { case_sensitive: false }
     validates :title, length: { minimum: 1 }
   end
