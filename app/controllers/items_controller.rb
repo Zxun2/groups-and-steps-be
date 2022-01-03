@@ -23,8 +23,9 @@ class ItemsController < ApplicationController
   
     # PUT /todos/:todo_id/items/:id
     def update
+      item_params[:deadline] = Date.parse(item_params[:deadline])
       @item.update(item_params)
-      response = {message: Message.item_updated, item: @item, steps: @todo.items}
+      response = {message: Message.item_updated, item: @item}
       json_response(response)
     end
    
