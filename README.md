@@ -1,20 +1,16 @@
-# CVWO Riding on Rails 2021/2022 - 📝 [Groups and Steps](https://cvwo-groups-and-steps.netlify.app/)
+# CVWO Riding on Rails 2021/2022 - 📝 [Groups and Steps](https://cvwo-groups-and-steps-ts.netlify.app/)
 
 <div id="#top"></div>
 
-Frontend Repo: https://github.com/Zxun2/cvwo-assignment-frontend
+Frontend Repo: <https://github.com/Zxun2/cvwo-assignment-frontend>
 
-Backend Repo: https://github.com/Zxun2/cvwo-assignment-backend
+Backend Repo: <https://github.com/Zxun2/cvwo-assignment-backend>
 
 |     Name     | Matriculation Number |
 | :----------: | :------------------: |
 | Lee Zong Xun |      A0233594Y       |
 
-## Application details
-
-![image](https://user-images.githubusercontent.com/63457492/146907275-c48e3b2f-b5b9-4eb6-ae60-7dcad107ff2f.png)
-
-### Tutorial account details for Web app :
+### Tutorial account details for Web app (Recommended)
 
 |       Email        | Password |
 | :----------------: | :------: |
@@ -24,15 +20,17 @@ Backend Repo: https://github.com/Zxun2/cvwo-assignment-backend
 
 Groups and Steps 📝 is a web application built using Rails and React for CVWO 2021/2022 assignment. It allows you to manage your tasks into groups, and further break them down into steps.
 
+### Features to look out for
+
+1. Tags to categorise your steps
+2. Notification system
+3. User profile
+4. Search functionality
+5. Deadlines
+
 ## Setting up
 
 ### Frontend
-
-#### Clone this repository
-
-```bash
-gh repo clone Zxun2/cvwo-assignment-frontend
-```
 
 #### Running Frontend Development Server on Docker
 
@@ -48,12 +46,6 @@ docker-compose -f docker-compose.yaml -f docker-compose-prod.yaml up -d --build
 
 ### Backend
 
-#### Clone this repository
-
-```bash
-gh repo clone Zxun2/cvwo-assignment-backend
-```
-
 #### Running Backend Development Server on Docker
 
 ```bash
@@ -62,8 +54,6 @@ docker-compose build
 
 # Set up database
 docker-compose run web bundle exec rails db:create
-
-# Run migration
 docker-compose run web bundle exec rails db:migrate
 
 # Rebuild any modified images and run in detached mode
