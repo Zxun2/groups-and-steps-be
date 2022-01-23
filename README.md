@@ -2,31 +2,22 @@
 
 <div id="#top"></div>
 
-Frontend Repo: <https://github.com/Zxun2/cvwo-assignment-frontend>
-
-Backend Repo: <https://github.com/Zxun2/cvwo-assignment-backend>
-
 |     Name     | Matriculation Number |
 | :----------: | :------------------: |
 | Lee Zong Xun |      A0233594Y       |
 
-### Tutorial account details for Web app (Recommended)
+You can find all relevant links here: [UserGuide](https://cvwo-groups-and-steps-user-guide.netlify.app/),
+[Mid-Assignment Write up](https://cvwo-groups-and-steps-user-guide.netlify.app/docs/Submission/Mid-Holiday%20Assignment), [Final Write up](https://cvwo-groups-and-steps-user-guide.netlify.app/docs/Submission/Final%20Submission)
 
-|       Email        | Password |
-| :----------------: | :------: |
-| tutorial@gmail.com |  foobar  |
+The PDF version can be found [here](https://github.com/Zxun2/cvwo-user-guide).
+
+Github repo: [Frontend Repo](https://github.com/Zxun2/cvwo-assignment-frontend), [Backend Repo](https://github.com/Zxun2/cvwo-assignment-backend)
+
+---
 
 ## Overview
 
 Groups and Steps 📝 is a web application built using Rails and React for CVWO 2021/2022 assignment. It allows you to manage your tasks into groups, and further break them down into steps.
-
-### Features to look out for
-
-1. Tags to categorise your steps
-2. Notification system
-3. User profile
-4. Search functionality
-5. Deadlines
 
 ## Setting up
 
@@ -66,18 +57,18 @@ docker-compose up --build -d
 Error starting userland proxy: listen tcp 0.0.0.0:5432: bind: address already in use
 ```
 
-Reason: Port 5432 is already in use on local machine. This is most likely that there is another PostgreSQL server running locally.
+> Reason: Port 5432 is already in use on local machine. This is most likely that there is another PostgreSQL server running locally.
 
-Solution: Either stop the PostgreSQL on local machine or map to another port in docker-compose.yml, like - '5434:5432'.
+> Solution: Either stop the PostgreSQL on local machine or map to another port in docker-compose.yml, like - '5434:5432'.
 
 ```bash
 Your Ruby version is 2.6.5, but your Gemfile specified 3.0.3
 ERROR: Service 'web' failed to build: The command '/bin/sh -c bundle install' returned a non-zero code: 18
 ```
 
-Reason: There is a Ruby version mismatch between Gemfile and Docker container.
+> Reason: There is a Ruby version mismatch between Gemfile and Docker container.
 
-Solution: Either update the Ruby version in Gemfile to 2.6.5, or pull explicitly Ruby 3.0.3 image in Dockerfile like FROM ruby:3.0.3-alpine.
+> Solution: Either update the Ruby version in Gemfile to 2.6.5, or pull explicitly Ruby 3.0.3 image in Dockerfile like FROM ruby:3.0.3-alpine.
 
 ```bash
 Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.40/containers/json: dial unix /var/run/docker.sock: connect: permission denied
